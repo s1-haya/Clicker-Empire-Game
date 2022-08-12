@@ -49,8 +49,6 @@ class User{
             case ("ability"):
                 user.itemObjects[index].quantity += quantity;
                 this.burgerClickMoney += item.account * quantity;
-                const oneClick = document.querySelector("#oneClick");
-                oneClick.innerHTML = "one click ¥ " + String(this.burgerClickMoney) ;
                 break;
             case("realEstate"):
                 user.itemObjects[index].quantity += quantity;
@@ -547,6 +545,9 @@ class Controller{
             else if(confirmed && currPrice <= user.money){
                 user.purchasedItem(parseInt(quantity.value),index);
                 user.ItemEffects(user,item, parseInt(quantity.value),index);
+                const oneClick = document.querySelector("#oneClick");
+                oneClick.innerHTML = "one click ¥ " + String(user.burgerClickMoney) ;
+                
                 container.innerHTML = "";
                 const main = Pages.createItemList(user);
                 container.append(main);
